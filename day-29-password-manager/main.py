@@ -14,9 +14,7 @@ def generate_password():
                'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
     numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
     symbols = ['!', '#', '$', '%', '&', '(', ')', '*', '+']
-    # nr_letters = random.randint(8, 10)
-    # nr_symbols = random.randint(2, 4)
-    # nr_numbers = random.randint(2, 4)
+    
     password_letters = [choice(letters) for _ in range(randint(8, 10))]
 
     password_symbols = [choice(symbols) for _ in range(randint(2, 4))]
@@ -26,10 +24,7 @@ def generate_password():
     password_list = password_letters + password_symbols + password_numbers
 
     shuffle(password_list)
-    # password = ""
-    # for char in password_list:
-    #     password += char
-    # print(f"Your password is: {final_password}")
+
     final_password = ''.join(password_list)
     pyperclip.copy(final_password)
     if password_entry.get() != 0:
