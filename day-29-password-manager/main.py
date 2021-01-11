@@ -55,23 +55,6 @@ def find_password():
 
 
 # ---------------------------- SAVE PASSWORD ------------------------------- #
-"""def handle_file(an_entry):
-    try:
-        with open("data.json", "r") as entry_log:
-            # Reading old data
-            data = json.load(entry_log)  # converts the data into a python dictionary
-            # Updating old data with new data
-            data.update(an_entry)
-    except FileNotFoundError:
-
-
-    else:
-        with open("data.json", "w") as entry_log:
-            # Saving updated data
-            json.dump(data, entry_log, indent=4)  # writes the data into the file
-"""
-
-
 def save():
     website_input = website_entry.get().title()
     email_user_input = email_user_entry.get()
@@ -87,14 +70,10 @@ def save():
         messagebox.showinfo(message="Please fill out all fields!")
 
     else:
-        # ok_to_save = messagebox.askokcancel(title=website_input, message=f"These are the details entered: \nEmail: "
-        #                                                                  f"{email_user_input} \nPassword: "
-        #                                                                  f"{password_input}")
-        # if ok_to_save:
         try:
             with open("data.json", "r") as entry_log:
                 # Reading old data
-                data = json.load(entry_log)  # converts the data into a python dictionary
+                data = json.load(entry_log)
         except FileNotFoundError:
             with open("data.json", "w") as entry_log:
                 json.dump(new_entry, entry_log, indent=4)
@@ -103,7 +82,7 @@ def save():
             data.update(new_entry)
             with open("data.json", "w") as entry_log:
                 # Saving updated data
-                json.dump(data, entry_log, indent=4)  # writes the data into the file
+                json.dump(data, entry_log, indent=4)
         finally:
             website_entry.delete(0, END)
             password_entry.delete(0, END)
